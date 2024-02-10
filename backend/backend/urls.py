@@ -24,6 +24,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 from . import api
+from app import api as app_api
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -49,6 +50,7 @@ urlpatterns = [
     path('api/answers/low-number-of-views/', api.AnswersLowNumberOfViewsView.as_view(), name='low-number-of-views'),
     path('api/answers/olds-news/', api.AnswersOldsAndNewsView.as_view(), name='olds-news'),
     path('api/prints/', api.PrintsView.as_view(), name='prints'),
+    path('api/flights/airport/more/flight/', app_api.AirportMoreMovement.as_view(), name='flights-airport-more'),
 
     # path('api/', include(router.urls)),
 ]
