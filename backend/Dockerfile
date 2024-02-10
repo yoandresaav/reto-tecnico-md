@@ -19,4 +19,4 @@ RUN pip install --no-cache-dir -r /requirements.txt
 COPY ./start.sh /start
 RUN chmod +x /start
 
-
+COPY ./pytest.ini /pytest.ini
