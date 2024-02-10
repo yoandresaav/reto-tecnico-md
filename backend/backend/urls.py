@@ -15,10 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from rest_framework import permissions
-from rest_framework.routers import DefaultRouter
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -39,8 +38,6 @@ schema_view = get_schema_view(
    permission_classes=(permissions.AllowAny,),
 )
 
-# router = DefaultRouter()
-# router.register(r'answers', AnswersResponsedAndNotResponsedView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,8 +47,12 @@ urlpatterns = [
     path('api/answers/low-number-of-views/', api.AnswersLowNumberOfViewsView.as_view(), name='low-number-of-views'),
     path('api/answers/olds-news/', api.AnswersOldsAndNewsView.as_view(), name='olds-news'),
     path('api/prints/', api.PrintsView.as_view(), name='prints'),
-    path('api/flights/airport/more/flight/', app_api.AirportMoreMovement.as_view(), name='flights-airport-more'),
 
-    # path('api/', include(router.urls)),
+    path('api/flights/airport/more/movement/', app_api.AirportMoreMovement.as_view(), name='flights-airport-more'),
+    path('api/flights/airline/more/flights/', app_api.AirlinesWithMoreFlightsView.as_view(), name='flights-airline-more'),
+    path('api/flights/day/more/flights/', app_api.DayWithMoreFligthsView.as_view(), name='flights-day-more-flights'),
+
+    path('api/flights/airlines/more/two/fligths/by/day/', app_api.AirlinesWithMoreThanTwoFlightsByDayView.as_view(), name='flights-airlines-more-two-flights-by-day'),
+
 ]
 
