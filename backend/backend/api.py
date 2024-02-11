@@ -5,7 +5,7 @@ from . import utils
 
 
 class AnswersResponsedAndNotResponsedView(APIView):
-    """View to get the number of answers responsed and not responsed."""
+    """Step: 1. View to get the number of answers responsed and not responsed."""
     methods = ['GET']
 
     def get(self, request):
@@ -14,6 +14,7 @@ class AnswersResponsedAndNotResponsedView(APIView):
         answers_responsed, answers_not_responsed = (utils
             .get_answers_responsed_and_not_responsed(data)
         )
+
         return Response({
             "answers_responsed": answers_responsed,
             "answers_not_responsed": answers_not_responsed,
@@ -21,7 +22,7 @@ class AnswersResponsedAndNotResponsedView(APIView):
 
 
 class AnswersHighReputationView(APIView):
-    """View to get the number of answers with high reputation."""
+    """Step: 2. View to get the number of answers with high reputation."""
     allowed_methods = ['GET']
 
     def get(self, request):
@@ -35,26 +36,28 @@ class AnswersHighReputationView(APIView):
 
 
 class AnswersLowNumberOfViewsView(APIView):
-    """View to get the number of answers with low number if views."""
+    """Step: 3. View to get the number of answers with low number if views."""
     allowed_methods = ['GET']
 
     def get(self, request):
         """Return the number of answers with low reputation."""
         data = utils.get_data_from_api()
         answer = utils.get_answers_low_number_of_views(data)
+
         return Response({
             "answers_low_number_of_views": answer,
         })
 
 
 class AnswersOldsAndNewsView(APIView):
-    """View to get the number of answers olds and news."""
+    """Step: 4.View to get the number of answers olds and news."""
     allowed_methods = ['GET']
 
     def get(self, request):
         """Return the number of answers olds and news."""""
         data = utils.get_data_from_api()
         old_answer, new_answer = utils.get_answers_olds_and_news(data)
+
         return Response({
             "answers_old": old_answer,
             "answers_new": new_answer,
@@ -62,11 +65,21 @@ class AnswersOldsAndNewsView(APIView):
 
 
 class PrintsView(APIView):
-    """View to get the number of prints."""
+    """Step: 5. View to get the number of prints."""
     allowed_methods = ['GET']
 
     def get(self, request):
         """Return the number of prints."""
+        data = utils.get_data_from_api()
+
+        step_2 = utils.get_answers_high_reputation(data)
+        step_3 = utils.get_answers_low_number_of_views(data)
+        step_4A, step_4B = utils.get_answers_olds_and_news(data)
+
         return Response({
-            "prints": 5
+            "answers_high_reputation": step_2,
+            "answers_low_number_of_views": step_3,
+            "answers_old": step_4A,
+            "answers_new": step_4B,
         })
+

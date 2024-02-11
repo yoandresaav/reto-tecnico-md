@@ -42,11 +42,11 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('api/answers/', api.AnswersResponsedAndNotResponsedView.as_view(), name='answers'),
+    path('api/answers/responsed/and/notresponsed/', api.AnswersResponsedAndNotResponsedView.as_view(), name='answers-reponsed-and-notresponsed'),
     path('api/answers/high-reputation/', api.AnswersHighReputationView.as_view(), name='high-reputation'),
     path('api/answers/low-number-of-views/', api.AnswersLowNumberOfViewsView.as_view(), name='low-number-of-views'),
     path('api/answers/olds-news/', api.AnswersOldsAndNewsView.as_view(), name='olds-news'),
-    path('api/prints/', api.PrintsView.as_view(), name='prints'),
+    path('api/answers/prints/', api.PrintsView.as_view(), name='prints'),
 
     path('api/flights/airport/more/movement/', app_api.AirportMoreMovement.as_view(), name='flights-airport-more'),
     path('api/flights/airline/more/flights/', app_api.AirlinesWithMoreFlightsView.as_view(), name='flights-airline-more'),
