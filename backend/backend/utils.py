@@ -1,20 +1,24 @@
 import requests
 
+from django.core.cache import cache
+
 
 API_URL = 'https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=perl&site=stackoverflow'
 
 def get_data_from_api():
-    """Get data from the API."""
-    return []
-    response = requests.get(API_URL)
-    print(response.status_code)
-    if response.status_code == 400:
-        # error_message": "too many requests from this IP, more requests available in 53071 seconds",
-        # Save data in json to avoid making requests to the API
-        return []
-    elif response.status_code != 200:
-        raise Exception('Error getting data from API')
-    return response.json()['items']
+    """Get data from the API. The data is saved in the cache for 24 hours."""
+    data = cache.get('data_stackexchange')
+    if not data:
+        response = requests.get(API_URL)
+        if response.status_code == 400:
+            # error 400 error_message": "too many requests from this IP, more requests available in 53071 seconds",
+            # Save data in json to avoid making requests to the API
+            raise Exception('Error 400: too many requests from this IP, more requests available in 53071 seconds')
+        elif response.status_code != 200:
+            raise Exception('Error getting data from API')
+        data = response.json()['items']
+        cache.set('data_stackexchange', data, 60 * 60 * 24)
+    return data
 
 
 def get_answers_responsed_and_not_responsed(data):

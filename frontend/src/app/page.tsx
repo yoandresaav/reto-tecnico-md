@@ -20,7 +20,7 @@ export default async function Home() {
 
         <QuestionWrapper>
           <p>1. Obtener el número de respuestas contestadas y no contestadas:</p>
-          <Response url={'answers'} />
+          <Response url={'answers/responsed/and/notresponsed'} />
         </QuestionWrapper>
 
         <QuestionWrapper>
@@ -40,7 +40,7 @@ export default async function Home() {
 
         <QuestionWrapper>
           <p>5. Imprimir en consola del punto 2 al 5:</p>
-          <Response url={'answers'} />
+          <Response url={'answers/prints'} />
         </QuestionWrapper>
 
         <QuestionWrapper>
@@ -62,6 +62,7 @@ export default async function Home() {
 
         <QuestionWrapper>
           <p>9. ¿Cuáles son las aerolíneas que tienen mas de 2 vuelos por día?</p>
+          <p className="text-sm">Ninguna aerolínea tiene mas de dos vuelos por día en este ejemplo porque los datos SQL dados no los tienen en cuenta, pero agregando a la BD o en los test se puede ver esta funcionalidad.</p>
           <Response url={'flights/airlines/more/two/fligths/by/day'} />
         </QuestionWrapper>
       </section>

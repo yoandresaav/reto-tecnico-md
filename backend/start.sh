@@ -7,6 +7,9 @@ set -o nounset
 # Apply database migrations
 python manage.py migrate
 
+# fixtures have pk so it rewrite the same data
+python manage.py loaddata ./data/dump.json
+
 # Run tests
 pytest
 

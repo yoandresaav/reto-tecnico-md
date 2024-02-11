@@ -13,7 +13,12 @@ type Props = {
     url: string
 }
 
-function JsonFormatter({ data, restart }) {
+type JsonFormatterProps = {
+    data: any
+    restart: () => void
+}
+
+function JsonFormatter({ data, restart }: JsonFormatterProps) {
     return (
         <div className="relative">
             <button className="absolute bg-sky-700 rounded py-1 hover:bg-sky-600 px-2 right-0 text-white" onClick={restart}>Reset</button>
@@ -25,7 +30,6 @@ function JsonFormatter({ data, restart }) {
 }
 
 export default function Response({ url }: Props) {
-    console.log('backendUrl', backendUrl)
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -42,6 +46,7 @@ export default function Response({ url }: Props) {
         <div>
         {!error && !data &&
             <button 
+                disabled={loading}
                 className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
                 onClick={async () => {
                     setLoading(true)
