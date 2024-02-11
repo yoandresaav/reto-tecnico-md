@@ -11,11 +11,11 @@ git clone https://github.com/yoandresaav/reto-tecnico-md.git .
 docker compose up --force-recreate --build -d
 ```
 
-After few seconds in web browser open frontend in
+After wait few seconds, open web browser and go to http://localhost:3000 
 
 [open frontend link](http://localhost:3000)
 
-open backend swagger in
+Open backend swagger in http://localhost:8000
 
 [open backend link](http://localhost:8000)
 
