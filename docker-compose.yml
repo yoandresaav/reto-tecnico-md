@@ -19,3 +19,5 @@ services:
     environment:
       - NODE_ENV=development
       - NEXT_PUBLIC_APP_API_ENDPOINT=localhost:8000
+    depends_on:
+      - backend

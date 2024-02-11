@@ -7,8 +7,8 @@ This project run a Django/REST and Next.js applications in Docker just ready to 
 Create a new folder and cd in, then:
 
 ```bash
-$ git clone https://github.com/yoandresaav/reto-tecnico-md.git .
-$ docker compose up --force-recreate --build -d
+git clone https://github.com/yoandresaav/reto-tecnico-md.git .
+docker compose up --force-recreate --build -d
 ```
 
 After few seconds in web browser open frontend in
@@ -24,14 +24,14 @@ The process of build images takes some seconds in order to download all packages
 ## Only for Build docker image
 
 ```bash
-$ docker compose build
+docker compose build
 ```
 
 ## Terminate
 In the same folder of the project run:
 
 ```bash
-$ docker compose down
+docker compose down
 ```
 
 ### Some probables errors
