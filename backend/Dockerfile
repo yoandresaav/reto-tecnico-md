@@ -12,11 +12,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN mkdir app
 WORKDIR /app
 
-COPY ./requirements.txt /requirements.txt
+COPY ./requirements.txt /app/
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r /requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./start.sh /start
-RUN chmod +x /start
+COPY . /app/
 
-COPY ./pytest.ini /pytest.ini
+RUN chmod +x start.sh
+
+ENTRYPOINT ["/bin/bash", "./start.sh"]
