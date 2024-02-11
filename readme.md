@@ -21,12 +21,6 @@ open backend swagger in
 
 The process of build images takes some seconds in order to download all packages, run migrations, load test data and run tests.
 
-## Only for Build docker image
-
-```bash
-docker compose build
-```
-
 ## Terminate
 In the same folder of the project run:
 
@@ -34,7 +28,13 @@ In the same folder of the project run:
 docker compose down
 ```
 
-### Some probables errors
+## Only for Build docker image
+
+```bash
+docker compose build
+```
+
+## Some probables errors
 
 In window is possible docker don't detect in backend the start file. Open start.sh file in VSCode and change Select End of Line Sequence from CRLF to LF.
 
