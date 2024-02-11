@@ -19,3 +19,11 @@ In the same folder of the project run:
 ```bash
 $ docker compose down
 ```
+
+
+## Images
+
+![Backend API](./images/screencapture-1.png)
+
+
+![Frontend](./images/screencapture-2.png)
