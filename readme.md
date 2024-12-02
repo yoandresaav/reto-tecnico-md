@@ -1,6 +1,6 @@
 ## Description
 
-This project run a Django/REST and Next.js applications in Docker just ready to deploy.
+This project runs a Django/REST and Next.js applications in Docker, ready to deploy.
 
 ## Run all project
 
